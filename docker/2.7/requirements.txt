@@ -1,3 +1,4 @@
 astroquery>=0.3.8
-astropy>=2.0.8
-pytest>=3.8.0
+astropy>=2.0.9
+pytest>=3.9.0
+cadcutils>=1.1.10
