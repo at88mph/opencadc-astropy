@@ -1,4 +1,4 @@
 astroquery>=0.3.8
 astropy>=3.0.5
-pytest>=3.9.0
 cadcutils>=1.1.10
+regions>=0.3
