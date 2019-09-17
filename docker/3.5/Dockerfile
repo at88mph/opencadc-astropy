@@ -3,14 +3,16 @@ FROM python:3.5-alpine
 WORKDIR /usr/src/app
 ENV ENV="PROD"
 
-COPY requirements.txt ./
 COPY entrypoint.sh /entrypoint.sh
 
-RUN apk --no-cache add gcc libc-dev libffi-dev openssl-dev bsd-compat-headers libmagic libxslt-dev
+RUN apk --no-cache add bsd-compat-headers gcc libc-dev libffi-dev libmagic libxslt-dev openssl-dev
 
 # Upgrade pip to the latest.
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir astropy \
+    && pip install --no-cache-dir cadcutils \
+    && pip install --no-cache-dir pytest \
+    && pip install --no-cache-dir regions
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
