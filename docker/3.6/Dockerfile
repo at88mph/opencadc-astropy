@@ -5,7 +5,7 @@ ENV ENV="PROD"
 
 COPY entrypoint.sh /entrypoint.sh
 
-RUN apk --no-cache add bsd-compat-headers gcc libc-dev libffi-dev libmagic libxslt-dev openssl-dev
+RUN apk --no-cache add bsd-compat-headers gcc libc-dev libffi-dev libmagic libxslt-dev musl-dev openssl-dev
 
 # Upgrade pip to the latest.
 RUN pip install --upgrade pip
