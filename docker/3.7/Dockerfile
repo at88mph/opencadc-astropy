@@ -10,8 +10,6 @@ RUN apk --no-cache add bsd-compat-headers gcc libc-dev libffi-dev libmagic libxs
 # Upgrade pip to the latest.
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir astropy \
-    && pip install --no-cache-dir cadcutils \
-    && pip install --no-cache-dir pytest \
     && pip install --no-cache-dir regions
 RUN chmod +x /entrypoint.sh
 
