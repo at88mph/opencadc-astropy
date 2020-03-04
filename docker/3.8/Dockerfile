@@ -9,7 +9,7 @@ RUN apk --no-cache add bsd-compat-headers gcc libc-dev libffi-dev libmagic libxs
 
 # Upgrade pip to the latest.
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir astropy \
+RUN pip install --no-cache-dir astropy>=4.0 \
     && pip install --no-cache-dir regions
 RUN chmod +x /entrypoint.sh
 
