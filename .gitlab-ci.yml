@@ -20,7 +20,7 @@ docker-build-2.7:
       echo "********"
       tag="${python_version}-slim"
       echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = '${tag}'"
-    - docker build --pull -t "$CI_REGISTRY_IMAGE${tag}" --network host -f docker/${python_version}/slim/Dockerfile docker/${python_version}/slim/
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${tag}" --network host -f docker/${python_version}/slim/Dockerfile docker/${python_version}/slim/
     - docker push "$CI_REGISTRY_IMAGE${tag}"
 
 docker-build-3.6:
@@ -31,7 +31,7 @@ docker-build-3.6:
       python_version="3.6"
       tag="${python_version}-slim"
       echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = '${tag}'"
-    - docker build --pull -t "$CI_REGISTRY_IMAGE${tag}" --network host -f docker/${python_version}/slim/Dockerfile docker/${python_version}/slim/
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${tag}" --network host -f docker/${python_version}/slim/Dockerfile docker/${python_version}/slim/
     - docker push "$CI_REGISTRY_IMAGE${tag}"
 
 docker-build-3.7:
@@ -42,7 +42,7 @@ docker-build-3.7:
       python_version="3.7"
       tag="${python_version}-slim"
       echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = '${tag}'"
-    - docker build --pull -t "$CI_REGISTRY_IMAGE${tag}" --network host -f docker/${python_version}/slim/Dockerfile docker/${python_version}/slim/
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${tag}" --network host -f docker/${python_version}/slim/Dockerfile docker/${python_version}/slim/
     - docker push "$CI_REGISTRY_IMAGE${tag}"
 
 docker-build-3.8:
@@ -53,7 +53,7 @@ docker-build-3.8:
       python_version="3.8"
       tag="${python_version}-slim"
       echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = '${tag}'"
-    - docker build --pull -t "$CI_REGISTRY_IMAGE${tag}" --network host -f docker/${python_version}/slim/Dockerfile docker/${python_version}/slim/
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${tag}" --network host -f docker/${python_version}/slim/Dockerfile docker/${python_version}/slim/
     - docker push "$CI_REGISTRY_IMAGE${tag}"
 
 docker-build-3.9:
@@ -64,7 +64,7 @@ docker-build-3.9:
       python_version="3.9"
       tag="${python_version}-slim"
       echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = '${tag}'"
-    - docker build --pull -t "$CI_REGISTRY_IMAGE${tag}" --network host -f docker/${python_version}/slim/Dockerfile docker/${python_version}/slim/
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${tag}" --network host -f docker/${python_version}/slim/Dockerfile docker/${python_version}/slim/
     - docker push "$CI_REGISTRY_IMAGE${tag}"
   # Run this job in a branch where a Dockerfile exists
   # rules:
