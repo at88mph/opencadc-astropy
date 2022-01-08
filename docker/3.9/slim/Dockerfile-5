@@ -13,7 +13,7 @@ RUN apt-get update \
 
 # Upgrade pip to the latest.
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir "astropy>=4.0" \
+RUN pip install --no-cache-dir "astropy>=5.0" \
     && pip install --no-cache-dir "regions"
 
 RUN chmod +x /entrypoint.sh
