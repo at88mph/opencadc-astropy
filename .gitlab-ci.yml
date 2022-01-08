@@ -18,13 +18,9 @@ docker-build-3.6:
       tag="${python_version}-slim"
       echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = '${tag}'"
       CI_REGISTRY_IMAGE_4="${CI_REGISTRY_IMAGE}-4"
-      CI_REGISTRY_IMAGE_5="${CI_REGISTRY_IMAGE}-5"
     - docker build --pull -t "${CI_REGISTRY_IMAGE_4}:${tag}" --network host -f docker/${python_version}/slim/Dockerfile-4 docker/${python_version}/slim/
     - docker push "$CI_REGISTRY_IMAGE_4:${tag}"
     - docker rmi "$CI_REGISTRY_IMAGE_4:${tag}"
-    - docker build --pull -t "${CI_REGISTRY_IMAGE_5}:${tag}" --network host -f docker/${python_version}/slim/Dockerfile-5 docker/${python_version}/slim/
-    - docker push "$CI_REGISTRY_IMAGE_5:${tag}"
-    - docker rmi "$CI_REGISTRY_IMAGE_5:${tag}"
 
 docker-build-3.7:
   stage: build
@@ -35,13 +31,9 @@ docker-build-3.7:
       tag="${python_version}-slim"
       echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = '${tag}'"
       CI_REGISTRY_IMAGE_4="${CI_REGISTRY_IMAGE}-4"
-      CI_REGISTRY_IMAGE_5="${CI_REGISTRY_IMAGE}-5"
     - docker build --pull -t "${CI_REGISTRY_IMAGE_4}:${tag}" --network host -f docker/${python_version}/slim/Dockerfile-4 docker/${python_version}/slim/
     - docker push "$CI_REGISTRY_IMAGE_4:${tag}"
     - docker rmi "$CI_REGISTRY_IMAGE_4:${tag}"
-    - docker build --pull -t "${CI_REGISTRY_IMAGE_5}:${tag}" --network host -f docker/${python_version}/slim/Dockerfile-5 docker/${python_version}/slim/
-    - docker push "$CI_REGISTRY_IMAGE_5:${tag}"
-    - docker rmi "$CI_REGISTRY_IMAGE_5:${tag}"
 
 docker-build-3.8:
   stage: build
