@@ -30,13 +30,13 @@ RUN cd /src \
   && gcc -o fitsverify ftverify.c fvrf_data.c fvrf_file.c fvrf_head.c fvrf_key.c fvrf_misc.c -DSTANDALONE -I/usr/local/include -L/usr/local/lib -lcfitsio -lm -lnsl \
   && cp ./fitsverify /usr/local/bin/
 
-
-FROM python:3.9-slim
-
 # Upgrade pip to the latest.
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir "astropy>=4.0,<5.0" \
     && pip install --no-cache-dir "regions"
+
+
+FROM python:3.9-slim
 
 COPY --from=builder /usr/local/ /usr/local/
 
