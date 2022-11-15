@@ -54,6 +54,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ${{ inputs.version }}
+          context: docker/${{ inputs.version }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.DOCKER_TAG }}
