@@ -13,6 +13,9 @@ on:
       version:
         required: true
         type: string
+      flavour:
+        required: true
+        type: string
     secrets:
       CI_REGISTRY_USER:
         required: true
@@ -45,12 +48,12 @@ jobs:
       -
         name: Set Docker tag
         run: |
-          TAG=${{ secrets.CI_REGISTRY_ORGANIZATION }}/${{ inputs.name }}:${{ inputs.version }}
+          TAG=${{ secrets.CI_REGISTRY_ORGANIZATION }}/${{ inputs.name }}:${{ inputs.version }}-${{ inputs.flavour }}
           echo "::set-env name=DOCKER_TAG::$TAG"
       -
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ${{ inputs.name }}
+          context: ${{ inputs.version }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.DOCKER_TAG }}

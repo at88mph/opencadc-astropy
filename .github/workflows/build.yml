@@ -14,21 +14,24 @@ jobs:
     secrets: inherit
     with:
       name: astropy
-      version: 3.9-slim
+      version: '3.9'
+      flavour: slim
 
   package-3.10:
     uses: ./.github/workflows/docker.yml
     secrets: inherit
     with:
       name: astropy
-      version: 3.10-slim
+      version: '3.10'
+      flavour: slim
 
   package-3.11:
     uses: ./.github/workflows/docker.yml
     secrets: inherit
     with:
       name: astropy
-      version: 3.11-slim
+      version: '3.11'
+      flavour: slim
 #
 # End Package Jobs
 #
