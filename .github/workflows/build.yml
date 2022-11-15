@@ -1,0 +1,34 @@
+name: Java+Docker CI
+
+on:
+  pull_request:
+  push:
+  release:
+
+jobs:
+  #
+  # Package jobs
+  #
+  package-3.9:
+    uses: ./.github/workflows/docker.yml
+    secrets: inherit
+    with:
+      name: astropy
+      version: 3.9-slim
+
+  package-3.10:
+    uses: ./.github/workflows/docker.yml
+    secrets: inherit
+    with:
+      name: astropy
+      version: 3.10-slim
+
+  package-3.11:
+    uses: ./.github/workflows/docker.yml
+    secrets: inherit
+    with:
+      name: astropy
+      version: 3.11-slim
+#
+# End Package Jobs
+#
