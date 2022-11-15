@@ -1,4 +1,4 @@
-name: Java+Docker CI
+name: OpenCADC AstroPy Docker CI
 
 on:
   pull_request:
