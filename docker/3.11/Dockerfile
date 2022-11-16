@@ -9,9 +9,6 @@ ARG FITSVERIFY_URL=https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify
 
 RUN apt-get update \
     && apt-get install -y autoconf gcc libc-dev libffi-dev libmagic-dev libnsl-dev libssl-dev libtool libxslt-dev make zlib1g-dev \
-    && apt-get clean \
-    && apt-get autoclean \
-    && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /src
 
 ADD ${CFITSIO_URL} /src/
@@ -36,8 +33,16 @@ RUN pip install --no-cache-dir "astropy>=5.0,<6.0" \
     && pip install --no-cache-dir "regions"
 
 
+FROM python:3.11-slim as libs
+
+RUN apt-get update \
+    && apt-get install -y libmagic-dev
+
+
 FROM python:3.11-slim
 
+COPY --from=libs /usr/ /usr/
+COPY --from=libs /etc/ /etc/
 COPY --from=builder /usr/local/ /usr/local/
 
 COPY entrypoint.sh /entrypoint.sh
