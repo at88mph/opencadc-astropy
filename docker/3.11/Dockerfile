@@ -2,24 +2,14 @@ FROM python:3.11-slim as builder
 
 ENV ENV="PROD"
 
-ARG CFITSIO_VERSION=4.1.0
-ARG CFITSIO_URL=https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-${CFITSIO_VERSION}.tar.gz
 ARG FITSVERIFY_VERSION=4.20
 ARG FITSVERIFY_URL=https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/fitsverify-${FITSVERIFY_VERSION}.tar.gz
 
 RUN apt-get update \
-    && apt-get install -y autoconf gcc libc-dev libffi-dev libmagic-dev libnsl-dev libssl-dev libtool libxslt-dev make zlib1g-dev \
+    && apt-get install -y autoconf gcc libc-dev libcfitsio-bin libffi-dev libmagic-dev libnsl-dev libssl-dev libtool libxslt-dev make zlib1g-dev \
     && mkdir -p /src
 
-ADD ${CFITSIO_URL} /src/
 ADD ${FITSVERIFY_URL} /src/
-
-RUN cd /src \
-  && tar xvf cfitsio-${CFITSIO_VERSION}.tar.gz \
-  && cd cfitsio-${CFITSIO_VERSION} \
-  && ./configure --prefix=/usr/local  \
-  && make \
-  && make install
 
 RUN cd /src \
   && tar xvf fitsverify-${FITSVERIFY_VERSION}.tar.gz \
@@ -36,7 +26,7 @@ RUN pip install --no-cache-dir "astropy>=5.0,<6.0" \
 FROM python:3.11-slim as libs
 
 RUN apt-get update \
-    && apt-get install -y libmagic-dev
+    && apt-get install -y libcfitsio-bin libmagic-dev
 
 
 FROM python:3.11-slim
