@@ -6,7 +6,7 @@ ARG FITSVERIFY_VERSION=4.20
 ARG FITSVERIFY_URL=https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/fitsverify-${FITSVERIFY_VERSION}.tar.gz
 
 RUN apt-get update \
-    && apt-get install -y autoconf gcc libc-dev libcfitsio-bin libffi-dev libmagic-dev libnsl-dev libssl-dev libtool libxslt-dev make zlib1g-dev \
+    && apt-get install -y autoconf gcc libc-dev libcfitsio-dev libffi-dev libmagic-dev libnsl-dev libssl-dev libtool libxslt-dev make zlib1g-dev \
     && mkdir -p /src
 
 ADD ${FITSVERIFY_URL} /src/
