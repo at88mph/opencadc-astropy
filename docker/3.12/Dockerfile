@@ -23,7 +23,7 @@ RUN pip install --no-cache-dir "astropy>=5.0,<6.0" \
     && pip install --no-cache-dir "regions"
 
 
-FROM python:3.11-slim as libs
+FROM python:3.12-slim as libs
 
 RUN apt-get update \
     && apt-get install -y libcfitsio-bin libmagic-dev
