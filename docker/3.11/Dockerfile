@@ -19,7 +19,7 @@ RUN cd /src \
 
 # Upgrade pip to the latest.
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir "astropy>=5.0,<6.0" \
+RUN pip install --no-cache-dir "astropy" \
     && pip install --no-cache-dir "regions"
 
 
