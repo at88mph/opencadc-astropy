@@ -1,4 +1,4 @@
-FROM python:3.10-slim as builder
+FROM python:3.14-slim as builder
 
 ENV ENV="PROD"
 
@@ -23,13 +23,13 @@ RUN pip install --no-cache-dir "astropy" \
     && pip install --no-cache-dir "regions"
 
 
-FROM python:3.10-slim as libs
+FROM python:3.14-slim as libs
 
 RUN apt-get update \
     && apt-get install -y libcfitsio-bin libmagic-dev
 
 
-FROM python:3.10-slim
+FROM python:3.14-slim
 
 COPY --from=libs /usr/ /usr/
 COPY --from=libs /etc/ /etc/
